@@ -51,6 +51,18 @@ public class Driver {
 		inv.addIngredient(i5);
 		
 		Food f1 = new Food(); 
+		f1.setName("Caesar Salad");
+		f1.setCost(5.50);
+		f1.addIngredient(i1, 2);
+		f1.addIngredient(i2, 1);
+		f1.addIngredient(i3, 3);
+		
+		Drink d1 = new Drink(); 
+		d1.setName("Mojito");
+		d1.setCost(3.50);
+		d1.setHasAlcohol(true);
+		d1.addIngredient(i4, 2);
+		d1.addIngredient(i5, 1);
 		
 		
 		

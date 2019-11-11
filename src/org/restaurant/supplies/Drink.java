@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Drink {
 
 	private String name; 
-	private int cost; 
+	private double cost; 
 	private boolean availability; 
 	private boolean complete; 
 	private boolean hasAlcohol; 
@@ -24,8 +24,8 @@ public class Drink {
 	
 	public void setName(String name) { this.name = name; } 
 	public String getName() { return name; }
-	public void setCost(int cost) { this.cost = cost; } 
-	public int getCost() { return cost; } 
+	public void setCost(double cost) { this.cost = cost; } 
+	public double getCost() { return cost; } 
 	public void setHasAlcohol(boolean alcohol) { hasAlcohol = alcohol; }
 	public boolean getHasAlcohol() { return hasAlcohol; }
 	public void addIngredient(Ingredient i, int serving) { 
