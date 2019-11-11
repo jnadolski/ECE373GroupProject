@@ -15,8 +15,8 @@ public abstract class Employee {
 	private String[] day = {"Sunday", "Monday", "Tuesday",
 							"wednesday", "Thursday", "Friday",
 							"Saturday"};
-	private String[] timeSlot = {"6:00 PM to 7:00 PM", "7:00 PM to 8:00 PM",
-								"8:00 PM to 9:00 PM", "9:00 PM to 10:00 PM"};
+	private String[] timeSlot = {"10:00 AM to 2:00 PM", "2:00 PM to 6:00 PM",
+								"6:00 PM to 10:00 PM"};
 	
 	// Constructor.
 	public Employee() {
@@ -76,10 +76,10 @@ public abstract class Employee {
 	public void printShift() {
 		String tokens[];
 		String stringIndex;
-		int indices[] = {101, 102, 103, 104, 201, 202, 203, 204,
-						301, 302, 303, 304, 401, 402, 403, 404,
-						501, 502, 503, 504, 601, 602, 603, 604,
-						701, 702, 703, 704};
+		int indices[] = {101, 102, 103, 201, 202, 203,
+						301, 302, 303, 401, 402, 403, 
+						501, 502, 503, 601, 602, 603,
+						701, 702, 703};
 		int tempValue;
 		int tempIndices[] = new int[2];
 		

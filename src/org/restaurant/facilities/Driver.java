@@ -1,5 +1,6 @@
 package org.restaurant.facilities;
 
+import org.restaurant.people.*;
 import org.restaurant.supplies.*;
 
 public class Driver {
@@ -64,13 +65,68 @@ public class Driver {
 		d1.addIngredient(i4, 2);
 		d1.addIngredient(i5, 1);
 		
+		r.addToFoodMenu(f1);
+		r.addToDrinkMenu(d1);
+		
+		Manager m = new Manager(); 
+		m.setName("Mr. Manager");
+		m.setHireDate("11/11/19");
+		m.setRestaurant(r);
+		r.setManager(m);
+		m.addShift(m, 101);
+		m.addShift(m, 301);
+		m.addShift(m, 501);
+		m.addShift(m, 701);
+		m.printShift();
+		
+		Hostess h = new Hostess();
+		h.setName("Hannah Hostess");
+		m.hireHostess(h, "11/11/19");
+		m.addShift(h, 502);
+		m.addShift(h, 503);
+		m.addShift(h, 602);
+		m.addShift(h, 603);
+		m.addShift(h, 702);
+		m.addShift(h, 703);
+		
+		Waiter w = new Waiter(); 
+		w.setName("Wilson Waiter");
+		m.hireWaiter(w, "11/11/19");
+		m.addShift(w, 502);
+		m.addShift(w, 503);
+		m.addShift(w, 602);
+		m.addShift(w, 603);
+		m.addShift(w, 702);
+		m.addShift(w, 703);
+		
+		Bartender b = new Bartender();
+		b.setName("Ben Bartender");
+		m.hireBartender(b, "11/11/19");
+		m.addShift(b, 502);
+		m.addShift(b, 503);
+		m.addShift(b, 602);
+		m.addShift(b, 603);
+		m.addShift(b, 702);
+		m.addShift(b, 703);
+		
+		Chef c = new Chef();
+		c.setName("Chad Chef");
+		m.hireChef(c, "11/11/19");
+		m.addShift(c, 502);
+		m.addShift(c, 503);
+		m.addShift(c, 602);
+		m.addShift(c, 603);
+		m.addShift(c, 702);
+		m.addShift(c, 703);
+		
 		
 		
 		//show more customers than table seats 
 		//seating customer and table not ready 
 		//ordering food not on menu 
 		//ordering out of stock food
-		//
+		//show shifts and removing a shift 
+		//waiter check age method 
 	}
 
 }
