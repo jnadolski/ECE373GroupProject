@@ -29,7 +29,8 @@ public class Hostess extends Employee {
 	}
 	
 	// Methods.
-	public void addPartyToWaitList(ArrayList<Customer> party) {
+	public void addPartyToWaitList(ArrayList<Customer> party, String name) {
+		party.get(0).setName(name);
 		waitList.add(party);
 	}
 	
@@ -75,7 +76,17 @@ public class Hostess extends Employee {
 //			}
 //		}
 		
-		for(ArrayList<Customer> resParties : reservations);
+
+		if(reservations.contains(party))
+			reservations.remove(party);
+		else if(waitList.contains(party))
+			waitList.remove(party);
+		
+		for(Customer c : party) {
+			c.isSeated();
+			c.setTable(table);
+			c.getTable().setStatus("In Use");
+		}
 	}
 	
 	public String checkTableStatus(Table table) {
