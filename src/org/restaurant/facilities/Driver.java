@@ -52,6 +52,13 @@ public class Driver {
 		
 		Food f1 = new Food(); 
 		
+		
+		
+		//show more customers than table seats 
+		//seating customer and table not ready 
+		//ordering food not on menu 
+		//ordering out of stock food
+		//
 	}
 
 }
