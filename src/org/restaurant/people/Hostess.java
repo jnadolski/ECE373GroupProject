@@ -8,6 +8,9 @@ public class Hostess extends Employee {
 	// Attributes.
 	private ArrayList<ArrayList<Customer>> waitList;
 	private ArrayList<ArrayList<Customer>> reservations;
+	private String[] day = {"Sunday", "Monday", "Tuesday",
+			"wednesday", "Thursday", "Friday",
+			"Saturday"};
 	
 	// Constructor.
 	public Hostess() {
@@ -30,42 +33,49 @@ public class Hostess extends Employee {
 		waitList.add(party);
 	}
 	
-	public void addReservation(Table table, Customer... customers) {
-		if (table.getStatus().compareTo("Cleaned") != 1) {
-			System.out.println("Customer(s) cannot be seated at Table " + table.getTableNumber() + ". Table's status: " + checkTableStatus(table));
-			return;
-		}
-		for (Customer a : customers) {
-			table.addCustomer(a);
-			a.setTable(table);
-			reservations.add(a);
-		}
-		table.setStatus("Reserved");
+	public void addReservation(ArrayList<Customer> party, String name, String phonenumber, int time) {
+//		if (table.getStatus().compareTo("Cleaned") != 1) {
+//			System.out.println("Customer(s) cannot be seated at Table " + table.getTableNumber() + ". Table's status: " + checkTableStatus(table));
+//			return;
+//		}
+//		for (Customer a : customers) {
+//			table.addCustomer(a);
+//			a.setTable(table);
+//			reservations.add(a);
+//		}
+//		table.setStatus("Reserved");
+		party.get(0).setName(name);
+		party.get(0).setPhone_number(phonenumber);
+		party.get(0).setReservation_time(time);
+		//possible reservation times will be in the format xyyyy where x is the day of week and yy is the hour from 1000-2200 (10:00am-10:00pm)
+		reservations.add(party); 
 	}
 	
-	public void seatGuests(Table table, Customer...customers) {
+	public void seatGuests(Table table, ArrayList<Customer> party) {
 		if (table.getStatus().compareTo("Cleaned") != 1) {
 			System.out.println("Customer(s) cannot be seated at Table " + table.getTableNumber() + ". Table's status: " + checkTableStatus(table));
 			return;
 		}
 		
-		if (table.getNumberOfSeats() < customers.length) {
-			System.out.println("The party of " + customers.length + " cannot be seated to Table " + table.getTableNumber() + ". Table " + table.getTableNumber() + " can only seat " + table.getNumberOfSeats() + " Customers.");
+		if (table.getNumberOfSeats() < party.size()) {
+			System.out.println("The party of " + party.size() + " cannot be seated to Table " + table.getTableNumber() + ". Table " + table.getTableNumber() + " can only seat " + table.getNumberOfSeats() + " Customers.");
 			return;
 		}
 		
-		for (Customer c : customers) {
-			if (c.getReservation_time() != 0) {
-				c.isSeated();
-				reservations.remove(c);
-				c.getTable().setStatus("In Use");
-			}
-			else {
-				c.setTable(table);
-				waitList.remove(c);
-				table.setStatus("In Use");
-			}
-		}
+//		for (Customer c : customers) {
+//			if (c.getReservation_time() != 0) {
+//				c.isSeated();
+//				reservations.remove(c);
+//				c.getTable().setStatus("In Use");
+//			}
+//			else {
+//				c.setTable(table);
+//				waitList.remove(c);
+//				table.setStatus("In Use");
+//			}
+//		}
+		
+		for(ArrayList<Customer> resParties : reservations);
 	}
 	
 	public String checkTableStatus(Table table) {
@@ -83,6 +93,18 @@ public class Hostess extends Employee {
 			System.out.println(status + " is an invalid Table status. Please enter: Cleaned, Dirty, In Use, Deactivated, Reserved.");
 			return;
 		}
+	}
+	
+	public void printReservationTime(Customer c) {
+		int dayOfWeek = c.getReservation_time() / 10000; 
+		int hour = (c.getReservation_time() - dayOfWeek) / 100;
+		int minutes = (c.getReservation_time() - dayOfWeek) - hour; 
+		
+		if(hour > 12) {
+			System.out.println(day[dayOfWeek] + " at " + (hour-12) + ":" + minutes + "PM");
+		}
+		else
+			System.out.println(day[dayOfWeek] + " at " + hour + ":" + minutes + "AM");
 	}
 	
 }
