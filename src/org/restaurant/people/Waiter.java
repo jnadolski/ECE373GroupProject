@@ -61,13 +61,20 @@ public class Waiter extends Employee {
 	}*/ // ignore.
 	
 	public void inputOrder(Customer customer, Food order) {
-		if (order.checkAvailability() == false) {
-			System.out.println(order.getName() + " is currently out of stock. Please make another selection.");
-			return;
+		for (Food f : this.getRestaurant().getFoodMenu()) {
+			if (f.getName().compareTo(order.getName()) == 1) {
+				if (order.checkAvailability() == false) {
+					System.out.println(order.getName() + " is currently out of stock. Please make another selection.");
+					return;
+				}
+				else {
+					customer.setFood_list(order);
+					return;
+				}
+			}
 		}
-		else {
-			customer.setFood_list(order);
-		}
+		
+		System.out.println(order.getName() + " is not in Restauraunt " + this.getRestaurant().getName() + "'s menu. Please make another selection.");
 	} /// customer and waiter interact outside of system, waiter adds the order to the customer's food list.
 	
 	public void placeOrder(Chef chef, Food order) { // chef and food as argument, added to the chef's queue.

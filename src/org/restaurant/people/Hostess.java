@@ -41,6 +41,11 @@ public class Hostess extends Employee {
 			return;
 		}
 		
+		if (table.getNumberOfSeats() < customers.length) {
+			System.out.println("The party of " + customers.length + " cannot be seated to Table " + table.getTableNumber() + ". Table " + table.getTableNumber() + " can only seat " + table.getNumberOfSeats() + " Customers.");
+			return;
+		}
+		
 		for (Customer c : customers) {
 			if (c.getReservation_time() != 0) {
 				c.isSeated();
