@@ -6,20 +6,28 @@ import org.restaurant.facilities.Table;
 
 public class Hostess extends Employee {
 	// Attributes.
-	private ArrayList<Customer> waitList;
-	private ArrayList<Customer> reservations;
+	private ArrayList<ArrayList<Customer>> waitList;
+	private ArrayList<ArrayList<Customer>> reservations;
 	
 	// Constructor.
 	public Hostess() {
-		waitList = new ArrayList<Customer>();
-		reservations = new ArrayList<Customer>();
+		waitList = new ArrayList<ArrayList<Customer>>();
+		reservations = new ArrayList<ArrayList<Customer>>();
+	}
+	
+	public ArrayList<Customer> createParty(int size) {
+		ArrayList<Customer> party = new ArrayList<Customer>();
+		
+		for(int i = 0; i < size; i++) {
+			party.add(new Customer()); 
+		}
+		
+		return party;
 	}
 	
 	// Methods.
-	public void addToWaitList(Customer... customers) {
-		for (Customer a : customers) {
-			waitList.add(a);
-		}
+	public void addPartyToWaitList(ArrayList<Customer> party) {
+		waitList.add(party);
 	}
 	
 	public void addReservation(Table table, Customer... customers) {
@@ -76,4 +84,5 @@ public class Hostess extends Employee {
 			return;
 		}
 	}
+	
 }

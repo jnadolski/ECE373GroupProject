@@ -127,6 +127,7 @@ public class Driver {
 		//ordering out of stock food
 		//show shifts and removing a shift 
 		//waiter check age method 
+		//pay employee 
 	}
 
 }
