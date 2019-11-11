@@ -178,7 +178,7 @@ public class Restaurant {
     	drinkMenu.add(drink);
     }
     
-    public Inventory getInventory() {a
+    public Inventory getInventory() {
     	return this.inventory; 
     }
     

@@ -12,6 +12,7 @@ public class Inventory {
 		restaurant = new Restaurant(); 
 		ingredientsList = new ArrayList<Ingredient>(); 
 	}
+	public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 	public void addIngredient(Ingredient i) { ingredientsList.add(i); }
 	public void restock() {
 		for(Ingredient i : ingredientsList) {
