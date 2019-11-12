@@ -70,27 +70,21 @@ public class Driver {
 		r.addToDrinkMenu(d1);
 		
 		Manager m = new Manager(); 
-		m.setName("Mr. Manager");
+		m.setName("Mr. Mason");
 		m.setHireDate("11/11/19");
 		r.setManager(m);
 		m.addShift(m, 101);
 		m.addShift(m, 301);
 		m.addShift(m, 501);
 		m.addShift(m, 701);
+		
+		System.out.println(m.getName() + "'s Shift Times: ");
 		m.printShift();
 		
-		Hostess h = new Hostess();
-		h.setName("Hannah Hostess");
-		m.hireHostess(h, "11/11/19");
-		m.addShift(h, 502);
-		m.addShift(h, 503);
-		m.addShift(h, 602);
-		m.addShift(h, 603);
-		m.addShift(h, 702);
-		m.addShift(h, 703);
+		System.out.println("\n\nHiring Employees: ");
 		
 		Waiter w = new Waiter(); 
-		w.setName("Wilson Waiter");
+		w.setName("Wilson");
 		m.hireWaiter(w, "11/11/19");
 		m.addShift(w, 502);
 		m.addShift(w, 503);
@@ -100,7 +94,7 @@ public class Driver {
 		m.addShift(w, 703);
 		
 		Bartender b = new Bartender();
-		b.setName("Ben Bartender");
+		b.setName("Ben");
 		m.hireBartender(b, "11/11/19");
 		m.addShift(b, 502);
 		m.addShift(b, 503);
@@ -110,7 +104,7 @@ public class Driver {
 		m.addShift(b, 703);
 		
 		Chef c = new Chef();
-		c.setName("Chad Chef");
+		c.setName("Chad");
 		m.hireChef(c, "11/11/19");
 		m.addShift(c, 502);
 		m.addShift(c, 503);
@@ -119,23 +113,81 @@ public class Driver {
 		m.addShift(c, 702);
 		m.addShift(c, 703);
 		
+		Hostess h = new Hostess();
+		h.setName("Hannah");
+		m.hireHostess(h, "11/11/19");
+		m.addShift(h, 502);
+		m.addShift(h, 503);
+		m.addShift(h, 602);
+		m.addShift(h, 603);
+		m.addShift(h, 702);
+		m.addShift(h, 703);
+		
+		System.out.println("\n\nHostess changing table statuses: ");
+		h.changeTableStatus(t1, "Cleaned");
+		h.changeTableStatus(t2, "Cleaned");
+		h.changeTableStatus(t3, "Cleaned");
+		
+		System.out.println("\n\nManager Assigning Waiters to Tables: ");
+		m.assignTableToWaiter(t1, w);
+		m.assignTableToWaiter(t2, w);
+		m.assignTableToWaiter(t3, w);
+		w.printTablesCovered();
+		
 		ArrayList<Customer> p1 = h.createParty(1);
 		ArrayList<Customer> p2 = h.createParty(2);
 		ArrayList<Customer> p3 = h.createParty(3);
-		h.addPartyToWaitList(p1, "PartyOf1");
-		h.addPartyToWaitList(p2, "PartyOf2");
-		h.addReservation(p3, "Partyof3", "987-654-3210", 51115);
+		h.addPartyToWaitList(p1, "Lewis");
+		h.addPartyToWaitList(p2, "Nick");
+		h.addReservation(p3, "Jennifer", "987-654-3210", 51115);
 		
-		h.printReservationTime(p3.get(0));
+		System.out.println("\n\n");
+		h.printReservationList();
+		System.out.println("\n\n");
+		h.printWaitList();
+		
+		//error testing to make sure customers are not seated at tables that do not have enough seats 
+		System.out.println("\nExpected Error statement: ");
+		h.seatGuests(t1, p3);
+		
+		h.seatGuests(t1, p1);
+		
+		//error testing to see if party is sat at table in use
+		System.out.println("\nExpected Error statement: ");
+		h.seatGuests(t1, p2);
+		
+		h.seatGuests(t2, p2);
+		h.seatGuests(t3, p3);
 		
 		
-		//show more customers than table seats 
-		//seating customer and table not ready 
-		//ordering food not on menu 
-		//ordering out of stock food
-		//show shifts and removing a shift 
+		System.out.println("\nWaiter taking Customer 1's order: ");
+		t1.getCustomers().get(0).setAge(21);
+		w.inputOrder(t1.getCustomers().get(0), f1, c);
+		w.passOrderToBar(b, t1.getCustomers().get(0), d1);
+		
+		System.out.println("\nRestock and trying again: [No Message Expected]");
+		inv.restock();
+		w.inputOrder(t1.getCustomers().get(0), f1, c);
+		w.passOrderToBar(b, t1.getCustomers().get(0), d1);
+		
+		System.out.println("\nSending to Chef: ");
+		c.printQueuedOrders();
+		System.out.println("\nChef completes order... \n");
+		c.completeOrder(0);
+		c.printCompletedOrders();
+		
+		System.out.println("\nChecking Bartender: ");
+		b.printQueuedOrders();
+		System.out.println("\nBartender completes order... \n");
+		b.completeOrder(0);
+		b.printCompletedOrders();
+		
+		System.out.println("\nWaiter tries to remove Customer from system: \n");
+		
+		
+		
 		//waiter check age method 
-		//pay employee 
 	}
 
 }
+

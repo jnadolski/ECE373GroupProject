@@ -53,7 +53,7 @@ public class Hostess extends Employee {
 	}
 	
 	public void seatGuests(Table table, ArrayList<Customer> party) {
-		if (table.getStatus().compareTo("Cleaned") != 1) {
+		if (table.getStatus().compareTo("Cleaned") != 0) {
 			System.out.println("Customer(s) cannot be seated at Table " + table.getTableNumber() + ". Table's status: " + checkTableStatus(table));
 			return;
 		}
@@ -83,6 +83,7 @@ public class Hostess extends Employee {
 			waitList.remove(party);
 		
 		for(Customer c : party) {
+			table.addCustomer(c);
 			c.isSeated();
 			c.setTable(table);
 			c.getTable().setStatus("In Use");
@@ -94,8 +95,8 @@ public class Hostess extends Employee {
 	}
 	
 	public void changeTableStatus(Table table, String status) {
-		if ((status.compareTo("Cleaned") == 1) || (status.compareTo("Dirty") == 1) || (status.compareTo("In Use") == 1) || (status.compareTo("Deactivated") == 1)
-				|| (status.compareTo("Reserved") == 1)) {
+		if ((status.compareTo("Cleaned") == 0) || (status.compareTo("Dirty") == 0) || (status.compareTo("In Use") == 0) || (status.compareTo("Deactivated") == 0)
+				|| (status.compareTo("Reserved") == 0)) {
 			table.setStatus(status);
 			System.out.println("Table " + table.getTableNumber() + "'s status has been set to: " + status);
 		}
@@ -118,4 +119,22 @@ public class Hostess extends Employee {
 			System.out.println(day[dayOfWeek] + " at " + hour + ":" + minutes + "AM");
 	}
 	
+	public void printReservationList() {
+		System.out.println("Reservation List: ");
+		for(ArrayList<Customer> parties : reservations) {
+			System.out.print(parties.get(0).getName() + ", " + parties.get(0).getPhone_number() + ", party of " + parties.size() + ", ");
+			this.printReservationTime(parties.get(0));
+			System.out.println();
+		}
+		
+	}
+	public void printWaitList() {
+		int placeInLine = 1; 
+		System.out.println("Wait List: ");
+		for(ArrayList<Customer> parties : waitList) {
+			System.out.println(placeInLine + ". " + parties.get(0).getName() + ", party of " + parties.size());
+			placeInLine++; 
+		}
+		
+	}
 }

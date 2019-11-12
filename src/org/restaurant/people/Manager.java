@@ -142,6 +142,7 @@ public class Manager extends Employee {
 		super.setHireDate(hireDate);
 	}
 	
+	//SHOULD CHANGING TO ACCEPT INVENTORY
 	public void orderItem(Ingredient ingredient, Integer amount) {
 		//if (this.getRestaurant().getRevenue() - (ingredient.getCost() * amount) >= 0) { // make revenue and money separate???
 			// go through inventory and find item. if it's not there, then add to inventory.

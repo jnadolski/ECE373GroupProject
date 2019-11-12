@@ -26,6 +26,13 @@ public class Waiter extends Employee {
 		return tablesCovered;
 	}
 	
+	public void printTablesCovered() {
+		System.out.println(this.getName() + " covers the tables: ");
+		for(Table tables : this.tablesCovered) {
+			System.out.println(tables.getTableNumber());
+		}
+	}
+	
 	protected void addTable(Table aTable) { // place in Manager
 		tablesCovered.add(aTable);
 	}
@@ -60,7 +67,7 @@ public class Waiter extends Employee {
 		}
 	}*/ // ignore.
 	
-	public void inputOrder(Customer customer, Food order) {
+	public void inputOrder(Customer customer, Food order, Chef chef) {
 //		for (Food f : this.getRestaurant().getFoodMenu()) {
 //			if (f.getName().compareTo(order.getName()) == 1) {
 //				if (order.checkAvailability() == false) {
@@ -82,14 +89,11 @@ public class Waiter extends Employee {
 		}
 		else {
 			customer.setFood_list(order);
+			chef.queueOrder(order);
 			return;
 		}
 		
 	} /// customer and waiter interact outside of system, waiter adds the order to the customer's food list.
-	
-	public void placeOrder(Chef chef, Food order) { // chef and food as argument, added to the chef's queue.
-		chef.queueOrder(order);
-	} // 
 	
 	public void passOrderToBar(Bartender bartender, Customer customer, Drink drink) {
 		bartender.inputOrder(customer, drink);

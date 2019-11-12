@@ -3,6 +3,7 @@ package org.restaurant.people;
 import java.util.ArrayList;
 
 import org.restaurant.supplies.Drink;
+import org.restaurant.supplies.Food;
 
 public class Bartender extends Employee {
 	// Attributes;
@@ -62,6 +63,22 @@ public class Bartender extends Employee {
 		}
 		else {
 			return true;
+		}
+	}
+	
+	public void printQueuedOrders() {
+		System.out.println("Queued Orders: ");
+		int placeInQueue = 1; 
+		for(Drink d : orders) {
+			System.out.println(placeInQueue + ". " + d.getName());
+			placeInQueue++; 
+		}
+	}
+	
+	public void printCompletedOrders() {
+		System.out.println("Completed Orders: ");
+		for(Drink d : completed) {
+			System.out.println(d.getName());
 		}
 	}
 	

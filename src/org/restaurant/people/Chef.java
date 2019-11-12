@@ -35,4 +35,20 @@ public class Chef extends Employee {
 		completedOrders.add(queuedOrders.get(index));
 		queuedOrders.remove(index);
 	}
+	
+	public void printQueuedOrders() {
+		System.out.println("Queued Orders: ");
+		int placeInQueue = 1; 
+		for(Food f : queuedOrders) {
+			System.out.println(placeInQueue + ". " + f.getName());
+			placeInQueue++; 
+		}
+	}
+	
+	public void printCompletedOrders() {
+		System.out.println("Completed Orders: ");
+		for(Food f : completedOrders) {
+			System.out.println(f.getName());
+		}
+	}
 }
