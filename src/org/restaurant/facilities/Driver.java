@@ -165,7 +165,7 @@ public class Driver {
 		w.inputOrder(t1.getCustomers().get(0), f1, c);
 		w.passOrderToBar(b, t1.getCustomers().get(0), d1);
 		
-		System.out.println("\nRestock and trying again: [No Message Expected]");
+		System.out.println("\nRestock and trying again: [No message expected]");
 		inv.restock();
 		w.inputOrder(t1.getCustomers().get(0), f1, c);
 		w.passOrderToBar(b, t1.getCustomers().get(0), d1);
@@ -182,7 +182,16 @@ public class Driver {
 		b.completeOrder(0);
 		b.printCompletedOrders();
 		
+		System.out.println("\nHostess checks table 1's status: " + h.checkTableStatus(t1));
 		System.out.println("\nWaiter tries to remove Customer from system: \n");
+		t1.getCustomers().get(0).leave();
+		
+		System.out.println("\nCustomer pays and then leaves: [No message expected]\n");
+		t1.getCustomers().get(0).payBillSelf();
+		t1.getCustomers().get(0).leave();
+		
+		System.out.println("Hostess checks table 1's status: " + h.checkTableStatus(t1));
+		h.changeTableStatus(t1, "Cleaned");
 		
 		
 		

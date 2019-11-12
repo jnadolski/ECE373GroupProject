@@ -265,6 +265,7 @@ public class Customer {
 			drink_list = new ArrayList<Drink>();
 			
 			table.removeCustomer(this);
+			table.setStatus("Dirty");
 		}
 	}
 }
