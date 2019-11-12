@@ -19,14 +19,15 @@ public class Chef extends Employee {
 	
 	// Methods;
 	public void queueOrder(Food order) {
-		for (Food f : this.getRestaurant().getFoodMenu()) {
-			if (f.getName().compareTo(order.getName()) == 1) {
-				queuedOrders.add(order);
-				return;
-			}
-		}
-		
-		System.out.println("Chef " + this.getName() + " cannot prepare " + order.getName() + " because it is not in Restaurant " + this.getRestaurant().getName() + "'s menu.");
+//		for (Food f : this.getRestaurant().getFoodMenu()) {
+//			if (f.getName().compareTo(order.getName()) == 1) {
+//				queuedOrders.add(order);
+//				return;
+//			}
+//		}
+//		
+//		System.out.println("Chef " + this.getName() + " cannot prepare " + order.getName() + " because it is not in Restaurant " + this.getRestaurant().getName() + "'s menu.");
+		queuedOrders.add(order);
 	}
 	
 	public void completeOrder(int index) {

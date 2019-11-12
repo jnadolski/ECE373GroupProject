@@ -1,5 +1,6 @@
 package org.restaurant.facilities;
 
+import java.util.ArrayList;
 import org.restaurant.people.*;
 import org.restaurant.supplies.*;
 
@@ -71,7 +72,6 @@ public class Driver {
 		Manager m = new Manager(); 
 		m.setName("Mr. Manager");
 		m.setHireDate("11/11/19");
-		m.setRestaurant(r);
 		r.setManager(m);
 		m.addShift(m, 101);
 		m.addShift(m, 301);
@@ -119,6 +119,14 @@ public class Driver {
 		m.addShift(c, 702);
 		m.addShift(c, 703);
 		
+		ArrayList<Customer> p1 = h.createParty(1);
+		ArrayList<Customer> p2 = h.createParty(2);
+		ArrayList<Customer> p3 = h.createParty(3);
+		h.addPartyToWaitList(p1, "PartyOf1");
+		h.addPartyToWaitList(p2, "PartyOf2");
+		h.addReservation(p3, "Partyof3", "987-654-3210", 51115);
+		
+		h.printReservationTime(p3.get(0));
 		
 		
 		//show more customers than table seats 

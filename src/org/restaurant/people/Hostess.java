@@ -48,7 +48,7 @@ public class Hostess extends Employee {
 		party.get(0).setName(name);
 		party.get(0).setPhone_number(phonenumber);
 		party.get(0).setReservation_time(time);
-		//possible reservation times will be in the format xyyyy where x is the day of week and yy is the hour from 1000-2200 (10:00am-10:00pm)
+		//possible reservation times will be in the format xyyyy where x is the day of week and yyyy is the hour from 1000-2200 (10:00am-10:00pm)
 		reservations.add(party); 
 	}
 	
@@ -108,8 +108,8 @@ public class Hostess extends Employee {
 	
 	public void printReservationTime(Customer c) {
 		int dayOfWeek = c.getReservation_time() / 10000; 
-		int hour = (c.getReservation_time() - dayOfWeek) / 100;
-		int minutes = (c.getReservation_time() - dayOfWeek) - hour; 
+		int hour = (c.getReservation_time() - dayOfWeek*10000) / 100;
+		int minutes = c.getReservation_time() - dayOfWeek*10000 - hour*100; 
 		
 		if(hour > 12) {
 			System.out.println(day[dayOfWeek] + " at " + (hour-12) + ":" + minutes + "PM");

@@ -10,7 +10,6 @@ public abstract class Employee {
 	private String hireDate;
 	private double hourlyPay;
 	// private int hoursWorked; // maybe not.
-	private Restaurant restaurant; // insert package later;
 	private ArrayList<Integer> shift;
 	private String[] day = {"Sunday", "Monday", "Tuesday",
 							"wednesday", "Thursday", "Friday",
@@ -24,7 +23,6 @@ public abstract class Employee {
 		hireDate = "unknown";
 		hourlyPay = 0.0;
 		//hoursWorked = 0;
-		restaurant = new Restaurant();
 		shift = new ArrayList<Integer>();
 	}
 	
@@ -52,14 +50,6 @@ public abstract class Employee {
 	public int getHoursWorked() {
 		return hoursWorked;
 	}*/
-	
-	protected void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
-	}
-	
-	public Restaurant getRestaurant() {
-		return restaurant;
-	}
 	
 	protected void setShift(Integer shift) {
 		this.shift.add(shift);
@@ -95,7 +85,7 @@ public abstract class Employee {
 					tempIndices[0] = Integer.parseInt(tokens[0]);
 					tempIndices[1] = Integer.parseInt(tokens[1]);
 					
-					System.out.println(day[tempIndices[0]] + " " + timeSlot[tempIndices[1]]);
+					System.out.println(day[tempIndices[0]-1] + " " + timeSlot[tempIndices[1]-1]);
 				}
 			}
 		}

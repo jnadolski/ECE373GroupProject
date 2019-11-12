@@ -16,7 +16,7 @@ public class Customer {
 	private String phone_number;
 	private boolean seated;
 	private int reservation_time;
-	private Customer paid_by;
+	//private Customer paid_by;
 	private ArrayList<Food> food_list;
 	private ArrayList<Drink> drink_list;
 	
@@ -29,7 +29,7 @@ public class Customer {
 		this.phone_number = "unknown";
 		this.seated = false;
 		this.reservation_time  = 0;
-		this.paid_by = new Customer();
+		//this.paid_by = 
 		this.food_list = new ArrayList<Food>();
 		this.drink_list = new ArrayList<Drink>();
 	}
@@ -94,13 +94,13 @@ public class Customer {
 		this.reservation_time = reservation_time;
 	}
 
-	public Customer getPaid_by() {
-		return paid_by;
-	}
-
-	public void setPaid_by(Customer paid_by) {
-		this.paid_by = paid_by;
-	}
+//	public Customer getPaid_by() {
+//		return paid_by;
+//	}
+//
+//	public void setPaid_by(Customer paid_by) {
+//		this.paid_by = paid_by;
+//	}
 
 	public ArrayList<Food> getFood_list() {
 		return food_list;
@@ -168,7 +168,7 @@ public class Customer {
 			return;
 		}*/
 		paid = true;
-		this.setPaid_by(this);
+		//this.setPaid_by(this);
 	}
 	
 	public void payBillTable() {
@@ -196,12 +196,12 @@ public class Customer {
 		for (Customer c : this.getTable().getCustomers()) {
 			if (c.getPaid() == false) {
 				c.setPaid(true);
-				c.setPaidBy(this);
+				//c.setPaidBy(this);
 			}
 			
-			else {
-				System.out.println("Customer " + c.getName() + "'s bill was already paid for by Customer " + c.getPaid_by().getName() + ".");
-			}
+//			else {
+//				System.out.println("Customer " + c.getName() + "'s bill was already paid for by Customer " + c.getPaid_by().getName() + ".");
+//			}
 		}
 		//this.setPaid_by(this);
 	}
@@ -237,20 +237,20 @@ public class Customer {
 		for (Customer c : customers) {
 			if (c.getPaid() == false) {
 				c.setPaid(true);
-				c.setPaidBy(this);
+				//c.setPaidBy(this);
 			}
 			
-			else {
-				System.out.println("Customer " + c.getName() + "'s bill was already paid for by Customer " + c.getPaid_by().getName() + ".");
-			}
+//			else {
+//				System.out.println("Customer " + c.getName() + "'s bill was already paid for by Customer " + c.getPaid_by().getName() + ".");
+//			}
 		}
 		
 	}
 	
-	private void setPaidBy(Customer customer) {
-		paid_by = customer;
-	}
-	
+//	private void setPaidBy(Customer customer) {
+//		paid_by = customer;
+//	}
+//	
 	public void leave() { // added
 		if (paid == false) {
 			System.out.println("Customer " + this.getName() + " cannot leave the restaurant because their bill is not yet paid.");
@@ -260,7 +260,7 @@ public class Customer {
 			wait_time = 0;
 			seated = false;
 			reservation_time = 0;
-			paid_by = new Customer();
+			//paid_by = new Customer();
 			food_list = new ArrayList<Food>();
 			drink_list = new ArrayList<Drink>();
 			
