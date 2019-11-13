@@ -55,7 +55,8 @@ public class Waiter extends Employee {
 	
 	protected void collectTip(double tip) {
 		tips = tips + tip;
-		System.out.println("Waiter " + this.getName() + " was tipped $" + tip);
+		String strDouble = String.format("%.2f", tip);
+		System.out.println("Waiter " + this.getName() + " was tipped $" + strDouble);
 	}
 	
 	/*public void takeOrder(Food order) {
@@ -100,7 +101,7 @@ public class Waiter extends Employee {
 			bartender.inputOrder(customer, drink);
 		}
 		else {
-			System.out.println("Waiter " + this.getName() + " cannot pass this order to the bar, because Customer " + customer.getName() + " is not 21 or older.");
+			System.out.println("Waiter " + this.getName() + " cannot pass this order to the bar, because Customer is not 21 or older.");
 		}
 	}
 	

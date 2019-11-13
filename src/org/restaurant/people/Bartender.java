@@ -78,7 +78,7 @@ public class Bartender extends Employee {
 	public void printCompletedOrders() {
 		System.out.println("Completed Orders: ");
 		for(Drink d : completed) {
-			System.out.println(d.getName());
+			System.out.println("   " + d.getName());
 		}
 	}
 	

@@ -167,6 +167,21 @@ public class Customer {
 			System.out.println(this.getName() + " does not have enough money to pay the bill himself/herself");
 			return;
 		}*/
+		String cost; 
+		System.out.println("\t\tBill: ");
+		double bill = 0; 
+		for(Food f : food_list) {
+			bill += f.getCost();
+			cost = String.format("%.2f", f.getCost());
+			System.out.println("   " + f.getName() + "\t\t$" + cost);
+		}
+		for(Drink d : drink_list) {
+			bill += d.getCost();
+			cost = String.format("%.2f", d.getCost());
+			System.out.println("   " + d.getName() + "\t\t$" + cost);
+		}
+		String strBill = String.format("%.2f", bill);
+		System.out.println("   Total: \t\t$" + strBill);
 		paid = true;
 		//this.setPaid_by(this);
 	}

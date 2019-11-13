@@ -166,10 +166,12 @@ public class Manager extends Employee {
 	
 	public void assignTableToWaiter(Table table, Waiter waiter) {
 		waiter.addTable(table);
+		table.setWaiter(waiter);
 	}
 	
 	public void removeTableFromWaiter(Table table, Waiter waiter) {
 		waiter.removeTable(table);
+		table.setWaiter(new Waiter());
 	}
 
 }

@@ -48,7 +48,7 @@ public class Chef extends Employee {
 	public void printCompletedOrders() {
 		System.out.println("Completed Orders: ");
 		for(Food f : completedOrders) {
-			System.out.println(f.getName());
+			System.out.println("   " + f.getName());
 		}
 	}
 }
