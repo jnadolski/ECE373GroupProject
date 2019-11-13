@@ -96,7 +96,21 @@ public class Waiter extends Employee {
 	} /// customer and waiter interact outside of system, waiter adds the order to the customer's food list.
 	
 	public void passOrderToBar(Bartender bartender, Customer customer, Drink drink) {
-		bartender.inputOrder(customer, drink);
+		if (checkAge(Customer customer == true) {
+			bartender.inputOrder(customer, drink);
+		}
+		else {
+			System.out.println("Waiter " + this.getName() + " cannot pass this order to the bar, because Customer " + customer.getName() + " is not 21 or older.");
+		}
+	}
+	
+	private boolean checkAge(Customer customer) {
+		if (customer.getAge() < 21) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 	
 	// add methods so that customers have two paths. Can order drinks through waiter who passes to bartender.
