@@ -128,4 +128,7 @@ public class Waiter extends Employee {
 		
 		return temp;
 	}*/ 
+	
+	//method to split bill by percentage
+	//method to move food order 
 }

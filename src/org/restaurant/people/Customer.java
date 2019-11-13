@@ -12,10 +12,10 @@ public class Customer {
 	//private double money;
 	private boolean paid; // used instead of money...
 	private int age;
-	private int wait_time;
-	private String phone_number;
-	private boolean seated;
-	private int reservation_time;
+	private int wait_time; 	//move to Party Class 
+	private String phone_number; 	//move to Party Class 
+	private boolean seated;		//dont need
+	private int reservation_time; 	//move to Party Class 
 	//private Customer paid_by;
 	private ArrayList<Food> food_list;
 	private ArrayList<Drink> drink_list;
