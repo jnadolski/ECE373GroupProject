@@ -96,7 +96,7 @@ public class Waiter extends Employee {
 	} /// customer and waiter interact outside of system, waiter adds the order to the customer's food list.
 	
 	public void passOrderToBar(Bartender bartender, Customer customer, Drink drink) {
-		if (checkAge(Customer customer == true) {
+		if (checkAge(customer) == true) {
 			bartender.inputOrder(customer, drink);
 		}
 		else {
