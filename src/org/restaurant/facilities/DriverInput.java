@@ -14,7 +14,7 @@ public class DriverInput {
 		Restaurant r = new Restaurant(); 
 		System.out.println("Enter restaurant name:");
 		r.setName(in.nextLine());
-		if(!r.getName().equalsIgnoreCase("skip")) {
+		if(!r.getName().equalsIgnoreCase("skip")) {		//delete this line 
 		System.out.println("Enter restaurant phone number:");
 		r.setPhone(in.nextLine());
 		System.out.println("Enter restaurant phone location:");
@@ -23,24 +23,25 @@ public class DriverInput {
 		r.setRating(in.nextDouble());
 		System.out.println("Enter restaurant revenue:");
 		r.setRevenue(in.nextDouble());
+		}														//delete this line
 		System.out.println("How many tables are in the restaurant? ");
 		numTables = in.nextInt();
-		for(int i = 0; i < numTables; i++) {
-			
+		for(int i = 1; i <= numTables; i++) {
+			Table t = new Table(); 
+			t.setTableNumber(i);
+			System.out.println("How many seats are at table " + i + "? ");
+			t.setNumberOfSeats(in.nextInt());
 		}
 		
-		System.out.println("---Restaurant Information---");
-		System.out.println(r.getName() + "\n" + r.getLocation() + "\n" + r.getPhone());
-		System.out.println("Rating:  " + r.getRating() + "\nRevenue:  " + r.getRevenue());
-		}
 		
+		//initializing inventory, ingredients, food, and drink 
 		Inventory inv = new Inventory(); 
 		System.out.println("\n---Creating Menu Items---");
 		String selection = "test"; 
 		String done = "not done"; 
 		boolean flag = false; 
 		do {
-			System.out.println("To create an item, enter \"ingredient\", \"food\", \"drink\", or enter \"exit\" to exit.");
+			System.out.println("To create an item, enter \"ingredient\", \"food\", \"drink\", or enter \"done\" to finish.");
 			selection = in.nextLine();
 			if(selection.isBlank())
 				selection = in.nextLine();
@@ -127,10 +128,80 @@ public class DriverInput {
 					done = "not done"; 
 				}
 			}
-		}while(!selection.equalsIgnoreCase("exit"));
+		}while(!selection.equalsIgnoreCase("done"));
 		
-		System.out.println("Enter an option: (print, hire, manager, )"); 
+		//hiring
+		System.out.println("\n---Hiring Employees---");
+		//need to enter manager information first
+		//give option to hire waitress, chef, bartender, and hostess
+		//need one of each to move on to next section or maybe offer force quit to move on and see printing informaiton 
 		
+		//prints or actions
+		do {
+			System.out.println("Enter \"print\" to print information, \"exit\" to exit, or one of the following to see their actions: (manager, hostess, waiter, chef, bartender) "); 
+			selection = in.nextLine();
+			if(selection.isBlank())
+				selection = in.nextLine();
+			if(selection.equalsIgnoreCase("print")) {
+				do {
+					System.out.println("To print the information, enter one of the following: restaurant, shifts, done ");
+					selection = in.nextLine();
+					if(selection.isBlank())
+						selection = in.nextLine();
+					if(selection.equalsIgnoreCase("restaurant")) {
+						System.out.println("---Restaurant Information---");
+						System.out.println(r.getName() + "\n" + r.getLocation() + "\n" + r.getPhone());
+						System.out.println("Rating:  " + r.getRating() + "\nRevenue:  " + r.getRevenue());
+					}
+					if(selection.equalsIgnoreCase("shifts")) {
+						//ask for employee to see shift of 
+					}
+					//reservation list from hostess
+					//wait list from hostess
+					//print table status from hostess 
+					//tables assigned to waiter 
+					//print queued orders in chef
+					//print completed orders in chef
+					//print queued orders in bartender 
+					//print completed orders in bartender 
+					
+					
+				}while(!selection.equalsIgnoreCase("done")); 
+			}
+			else if(selection.equalsIgnoreCase("manager")) {
+				System.out.println("Manager options: "); 
+				//add shifts 
+				//remove shifts
+				//assign table to waiter
+				//remove table from waiter 
+			}
+			else if(selection.equalsIgnoreCase("Hostess")) {
+				System.out.println("Hostess options: "); 
+				//create party
+					//must add party to wait list or reservation list 
+				//seat guests
+				//check table status
+				//change table status
+			}
+			else if(selection.equalsIgnoreCase("Waiter")) {
+				System.out.println("Waiter options: "); 
+				//input order 
+				//pass order to bar
+				//make customer pay (done through tables assigned -> customer of that table)
+				//make table leave 
+			}
+			else if(selection.equalsIgnoreCase("Chef")) {
+				System.out.println("Chef options: "); 
+				//complete order 
+			}
+			else if(selection.equalsIgnoreCase("Bartender")) {
+				System.out.println("Bartender options: "); 
+				//complete order --- need to set customer age to over 21 first 
+			}
+			
+		}while(!selection.equalsIgnoreCase("exit")); 
+		
+		System.out.println("End of restaurant interactive demonstration."); 
 	}
 
 }
