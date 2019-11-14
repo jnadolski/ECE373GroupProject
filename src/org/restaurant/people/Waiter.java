@@ -29,7 +29,7 @@ public class Waiter extends Employee {
 	public void printTablesCovered() {
 		System.out.println(this.getName() + " covers the tables: ");
 		for(Table tables : this.tablesCovered) {
-			System.out.println(tables.getTableNumber());
+			System.out.println(tables.getTableNumber() + ". " + tables.getNumberOfSeats() + " seats");
 		}
 	}
 	
