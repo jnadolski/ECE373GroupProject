@@ -11,6 +11,7 @@ public class Inventory {
 		ingredientsList = new ArrayList<Ingredient>(); 
 	}
 	public void addIngredient(Ingredient i) { ingredientsList.add(i); }
+	public ArrayList<Ingredient> getIngredients() { return ingredientsList; } 
 	public void restock() {
 		for(Ingredient i : ingredientsList) {
 			i.addAmount(10);
