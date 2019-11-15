@@ -157,11 +157,35 @@ public class Manager extends Employee {
 	}
 	
 	public void addShift(Employee employee, Integer shift) {
-		employee.setShift(shift);
+		if ((shift == 101) || (shift == 102) || (shift == 103)
+				|| (shift == 201) || (shift == 202) || (shift == 203) || 
+				(shift == 301) || (shift == 302) || (shift == 303) || 
+				(shift == 401) || (shift == 402) || (shift == 403) || 
+				(shift == 501) || (shift == 502) || (shift == 503) ||
+				(shift == 601) || (shift == 602) || (shift == 603) || 
+				(shift == 701) || (shift == 702) || (shift == 703)) {
+			employee.setShift(shift);
+		}
+		else {
+			System.out.println(shift + " is an invalid shift code. Please enter: 101, 102, 103, 201, 202, 203, 301, 302, 303, "
+					+ "401, 402, 403, 501, 502, 503, 601, 602, 603, 701, 702, 703");
+		}
 	}
 	
 	public void removeShift(Employee employee, Integer shift) {
-		employee.removeShift(shift);
+		if ((shift == 101) || (shift == 102) || (shift == 103)
+				|| (shift == 201) || (shift == 202) || (shift == 203) || 
+				(shift == 301) || (shift == 302) || (shift == 303) || 
+				(shift == 401) || (shift == 402) || (shift == 403) || 
+				(shift == 501) || (shift == 502) || (shift == 503) ||
+				(shift == 601) || (shift == 602) || (shift == 603) || 
+				(shift == 701) || (shift == 702) || (shift == 703)) {
+			employee.removeShift(shift);
+		}
+		else {
+			System.out.println(shift + " is an invalid shift code. Please enter: 101, 102, 103, 201, 202, 203, 301, 302, 303, "
+					+ "401, 402, 403, 501, 502, 503, 601, 602, 603, 701, 702, 703");
+		}
 	}
 	
 	public void assignTableToWaiter(Table table, Waiter waiter) {
@@ -172,6 +196,100 @@ public class Manager extends Employee {
 	public void removeTableFromWaiter(Table table, Waiter waiter) {
 		waiter.removeTable(table);
 		table.setWaiter(new Waiter());
+	}
+	
+	public ArrayList<Waiter> getWaiters() {
+		return waiter_list;
+	}
+	
+	public ArrayList<Bartender> getBartenders() {
+		return bartender_list;
+	}
+	
+	public ArrayList<Chef> getChefs() {
+		return chef_list;
+	}
+	
+	public ArrayList<Hostess> getHostesses() {
+		return hostess_list;
+	}
+	
+	public void setEmployeePay(Employee employee, double hourlyPay) {
+		employee.setHourlyPay(hourlyPay);
+	}
+	
+	public void printEmployees() {	// new, for testing interactive.
+		System.out.println("Current Employees: ");
+		System.out.println("Manager - " + this.getName());
+		for (Waiter w : waiter_list) {
+			System.out.println("Waiter - " + w.getName());
+		}
+		for (Bartender b : bartender_list) {
+			System.out.println("Bartender - " + b.getName());
+		}
+		for (Hostess h : hostess_list) {
+			System.out.println("Hostess - " + h.getName());
+		}
+		for (Chef c : chef_list) {
+			System.out.println("Chef - " + c.getName());
+		}
+	}
+	
+	public boolean employeeExists(String name) {
+		if (this.getName().equalsIgnoreCase(name)) {
+			return true;
+		}
+		
+		for (Waiter w : waiter_list) {
+			if(w.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		for (Bartender b : bartender_list) {
+			if(b.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		for (Hostess h : hostess_list) {
+			if(h.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		for (Chef c : chef_list) {
+			if(c.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Employee searchEmployee(String name) {
+		if (this.getName().equalsIgnoreCase(name)) {
+			return this;
+		}
+		
+		for (Waiter w : waiter_list) {
+			if(w.getName().equalsIgnoreCase(name)) {
+				return w;
+			}
+		}
+		for (Bartender b : bartender_list) {
+			if(b.getName().equalsIgnoreCase(name)) {
+				return b;
+			}
+		}
+		for (Hostess h : hostess_list) {
+			if(h.getName().equalsIgnoreCase(name)) {
+				return h;
+			}
+		}
+		for (Chef c : chef_list) {
+			if(c.getName().equalsIgnoreCase(name)) {
+				return c;
+			}
+		}
+		
+		return null;
 	}
 
 }
